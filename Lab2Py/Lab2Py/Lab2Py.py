@@ -77,7 +77,7 @@ def apply_laplacian_filter():
 def local_thresholding():
     if original_image is not None:
         gray_image = cv2.cvtColor(original_image, cv2.COLOR_BGR2GRAY)
-        adaptive_thresh = cv2.adaptiveThreshold(gray_image, 255, cv2.ADAPTIVE_THRESH_MEAN_C, cv2.THRESH_BINARY, 11, 2)
+        adaptive_thresh = cv2.adaptiveThreshold(gray_image, 255, cv2.ADAPTIVE_THRESH_MEAN_C, cv2.THRESH_BINARY, 199, 5)
         show_modified_image(adaptive_thresh)
     else:
         messagebox.showwarning("Warning", "Please load an image first.")
@@ -85,23 +85,22 @@ def local_thresholding():
 def local_thresh():
     if original_image is not None:
         gray_image = cv2.cvtColor(original_image, cv2.COLOR_BGR2GRAY)
-        adaptive_thresh = cv2.adaptiveThreshold(gray_image, 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C, cv2.THRESH_BINARY, 11, 2)
+        adaptive_thresh = cv2.adaptiveThreshold(gray_image, 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C, cv2.THRESH_BINARY, 199, 5)
         show_modified_image(adaptive_thresh)
     else:
         messagebox.showwarning("Warning", "Please load an image first.")
 
 
-upload_button = tk.Button(button_frame, text="Load Image", command=load_image, width=20)
+upload_button = tk.Button(button_frame, text="Load Image", command=load_image, width=30)
 upload_button.pack(pady=5)
 
-laplacian_button = tk.Button(button_frame, text="Apply Laplacian Filter", command=apply_laplacian_filter, width=20)
+laplacian_button = tk.Button(button_frame, text="Apply Laplacian Filter", command=apply_laplacian_filter, width=30)
 laplacian_button.pack(pady=5)
 
-threshold_button = tk.Button(button_frame, text="Apply Adaptive Thresholding", command=local_thresholding, width=20)
+threshold_button = tk.Button(button_frame, text="Apply Adaptive Thresholding", command=local_thresholding, width=30)
 threshold_button.pack(pady=5)
 
-threshold_button1 = tk.Button(button_frame, text="Apply Gaussian Adaptive Thresholding", command=local_thresh, width=20)
+threshold_button1 = tk.Button(button_frame, text="Apply Gaussian Adaptive Thresholding", command=local_thresh, width=30)
 threshold_button1.pack(pady=5)
-
 
 root.mainloop()
